@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gcp-devops-gke
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gcp-devops
+  template:
+    metadata:
+      labels:
+        app: gcp-devops
+    spec:
+      containers:
+      - name: gcp-devops-prac
+        image: gcr.io/omni-163105/gcpdevops:latest
+        ports:
+        - containerPort: 5000
+        env: 
+          - name: PORT
+            value: 5000
